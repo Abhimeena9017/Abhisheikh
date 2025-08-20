@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Meena - Chemical Engineering Student | IIT Bombay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f3460;
+            --accent-color: #ffd700;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0f3460 0%, #16537e 50%, #1e6091 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .particles-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); }
+            10% { transform: translateY(90vh) scale(1); }
+            90% { transform: translateY(-10vh) scale(1); }
+            100% { transform: translateY(-10vh) scale(0); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+            position: relative;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0.1;
+            border-radius: 50px;
+            filter: blur(40px);
+            animation: heroGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 2rem;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            animation: profilePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes profilePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); }
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShimmer 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleShimmer {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.2); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .iit-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .iit-badge:hover {
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-3);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .about-text p:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--accent-color);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .achievement-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .achievement-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-description {
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: rotate 4s linear infinite;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-description {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-weight: 300;
+            transition: all 0.2s ease;
+        }
+
+        .skill-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            transition: all 0.2s ease;
+        }
+
+        .skill-list li:hover {
+            padding-left: 2rem;
+            color: var(--accent-color);
+        }
+
+        .skill-list li:hover::before {
+            transform: scale(1.2);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .contact-item:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-value {
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+            opacity: 0.8;
+            margin-top: 4rem;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            background: var(--gradient-1);
+            opacity: 0.1;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+            background: var(--gradient-2);
+            opacity: 0.1;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+            background: var(--gradient-3);
+            opacity: 0.1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: var(--gradient-3);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .glass-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <div class="particles-background" id="particles"></div>
+
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <header>
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="profile-img">👨‍🔬</div>
+            <h1 id="name-title">Abhishek Meena</h1>
+            <p class="subtitle">Third Year Chemical Engineering Student</p>
+            <div class="iit-badge">
+                <i class="fas fa-graduation-cap"></i>
+                Indian Institute of Technology, Bombay
+            </div>
+        </div>
+    </header>
+
+    <section class="container fade-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="glass-card">
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am a passionate third-year Chemical Engineering student at IIT Bombay, one of India's premier technical institutions. My journey in chemical engineering is driven by a deep curiosity about process optimization, sustainable technologies, and innovation in chemical processes.</p>
+                    
+                    <p>With a strong foundation in thermodynamics, fluid mechanics, and process design, I am constantly exploring how chemical engineering principles can be applied to solve real-world challenges, particularly in areas of environmental sustainability and process efficiency.</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">3rd</div>
+                        <div class="stat-label">Year Student</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8.5+</div>
+                        <div class="stat-label">CPI/CGPA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">IIT</div>
+                        <div class="stat-label">Bombay</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container fade-in">
+        <h2 class="section-title">Key Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <span class="achievement-icon">🏆</span>
+                <div class="achievement-title">Academic Excellence</div>
+                <p class="achievement-description">Maintained consistent academic performance with CGPA of 8.5+ across all semesters at IIT Bombay, ranking in top 15% of the department</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">🔬</span>
+                <div class="achievement-title">Research Experience</div>
+                <p class="achievement-description">Actively involved in undergraduate research projects focusing on process optimization, sustainable chemical engineering practices, and green chemistry initiatives</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">💡</span>
+                <div class="achievement-title">Innovation Projects</div>
+                <p class="achievement-description">Developed innovative solutions for chemical process problems through coursework and independent projects, including process simulation and optimization studies</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">🎯</span>
+                <div class="achievement-title">JEE Advanced Success</div>
+                <p class="achievement-description">Secured admission to IIT Bombay through JEE Advanced, demonstrating exceptional analytical and problem-solving skills among top 0.25% candidates</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">👥</span>
+                <div class="achievement-title">Leadership & Teamwork</div>
+                <p class="achievement-description">Active participation in departmental activities, student organizations, and technical societies, developing strong leadership and collaborative skills</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">🌱</span>
+                <div class="achievement-title">Sustainability Focus</div>
+                <p class="achievement-description">Specialized interest in sustainable chemical processes, renewable energy integration, and environmental impact reduction in industrial operations</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container fade-in">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="glass-card">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-chart-line"></i>
+                        Advanced Process Optimization
+                    </div>
+                    <p class="project-description">Comprehensive analysis of multi-stage chemical processes using advanced optimization algorithms and machine learning techniques to improve efficiency by 25% while reducing energy consumption.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Aspen HYSYS</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-leaf"></i>
+                        Sustainable Energy Integration
+                    </div>
+                    <p class="project-description">Research project investigating renewable energy integration in petrochemical processes, focusing on solar thermal integration and carbon footprint reduction while maintaining economic viability.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ChemCAD</span>
+                        <span class="tech-tag">Life Cycle Analysis</span>
+                        <span class="tech-tag">Sustainability</span>
+                        <span class="tech-tag">Techno-Economic Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-fire"></i>
+                        Heat Exchanger Network Design
+                    </div>
+                    <p class="project-description">Design and optimization of complex heat exchanger networks for industrial applications, implementing pinch analysis and considering thermal efficiency, pressure drop, and economic factors.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Heat Transfer</span>
+                        <span class="tech-tag">AutoCAD</span>
+                        <span class="tech-tag">Pinch Analysis</span>
+                        <span class="tech-tag">Economic Optimization</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-flask"></i>
+                        Advanced Mass Transfer Study
+                    </div>
+                    <p class="project-description">Experimental investigation of mass transfer phenomena in absorption and distillation columns, developing novel correlations for industrial-scale applications and process intensification.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Experimental Design</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                        <span class="tech-tag">Mass Transfer</span>
+                        <span class="tech-tag">Process Intensification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container fade-in">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="glass-card">
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming & Software</h3>
+                    <ul class="skill-list">
+                        <li>MATLAB & Simulink</li>
+                        <li>Python (NumPy, SciPy, Pandas)</li>
+                        <li>Aspen HYSYS/Plus</li>
+                        <li>ChemCAD & DWSIM</li>
+                        <li>AutoCAD & SolidWorks</li>
+                        <li>R Programming</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> Core Engineering</h3>
+                    <ul class="skill-list">
+                        <li>Process Design & Simulation</li>
+                        <li>Heat & Mass Transfer</li>
+                        <li>Chemical Reaction Engineering</li>
+                        <li>Thermodynamics & Phase Equilibria</li>
+                        <li>Fluid Mechanics & Transport</li>
+                        <li>Process Control & Optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-microscope"></i> Research & Analysis</h3>
+                    <ul class="skill-list">
+                        <li>Data Science & Machine Learning</li>
+                        <li>Statistical Analysis & DOE</li>
+                        <li>Technical Writing & Publications</li>
+                        <li>Literature Review & Research</li>
+                        <li>Process Safety Analysis</li>
+                        <li>Economic Evaluation</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-users"></i> Professional Skills</h3>
+                    <ul class="skill-list">
+                        <li>Project Management</li>
+                        <li>Team Leadership</li>
+                        <li>Public Speaking</li>
+                        <li>Cross-functional Collaboration</li>
+                        <li>Critical Thinking</li>
+                        <li>Innovation & Creativity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container fade-in">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="glass-card">
+            <div class="contact-info">
+                <a href="mailto:abhishekmeena00036@gmail.com" class="contact-item">
+                    <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">abhishekmeena00036@gmail.com</div>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/abhishek-meena-b67123287/" class="contact-item" target="_blank">
+                    <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">Professional Network</div>
+                </a>
+                
+                <a href="#" class="contact-item">
+                    <span class="contact-icon"><i class="fab fa-github"></i></span>
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">View Projects</div>
+                </a>
+                
+                <div class="contact-item">
+                    <span class="contact-icon"><i class="fas fa-phone"></i></span>
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+91 8000958112</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abhishek Meena | Chemical Engineering Student, IIT Bombay</p>
+            <p>🚀 Building the future through innovative chemical engineering solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle system
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = (Math.random() * 3 + 1) + 'px';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+        }
+
+        // Intersection Observer for animations
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Typing effect for name
+        function typeWriterEffect() {
+            const nameElement = document.getElementById('name-title');
+            const originalText = nameElement.textContent;
+            nameElement.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 1500);
+        }
+
+        // Enhanced parallax effect
+        function setupParallax() {
+            document.addEventListener('mousemove', (e) => {
+                const circles = document.querySelectorAll('.floating-circle');
+                const x = (e.clientX / window.innerWidth) - 0.5;
+                const y = (e.clientY / window.innerHeight) - 0.5;
+
+                circles.forEach((circle, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const xOffset = x * speed * 50;
+                    const yOffset = y * speed * 50;
+                    
+                    circle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                });
+
+                // Parallax for hero background
+                const heroBackground = document.querySelector('.hero-background');
+                if (heroBackground) {
+                    heroBackground.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+                }
+            });
+        }
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                if (isNaN(target)) return;
+                
+                const increment = target / 200;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setupIntersectionObserver();
+            typeWriterEffect();
+            setupParallax();
+            
+            // Animate counters when stats section is visible
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(animateCounters, 500);
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+
+        // Update scroll progress on scroll
+        window.addEventListener('scroll', updateScrollProgress);
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
