@@ -1,144 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abhishek Meena - Portfolio</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #0d0d0d;
-        color: #fff;
-        overflow-x: hidden;
-    }
-    header {
-        text-align: center;
-        padding: 50px 20px;
-    }
-    h1 {
-        font-size: 2.5rem;
-        display: inline-block;
-        border-right: 2px solid #fff;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-    .progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 5px;
-        background: #ff9800;
-        z-index: 100;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Meena - Chemical Engineering Student | IIT Bombay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background:#0f3460;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .iit-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-text {
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .achievement-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.05);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .skill-category h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: #ffd700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
-<div class="progress-bar" id="progress-bar"></div>
-<header>
-    <h1 id="name-title">Abhishek Meena</h1>
-</header>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
 
-<script>
-// Particle background
-function createParticles() {
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let particlesArray;
-    const numberOfParticles = 100;
+    <header>
+        <div class="container">
+        <div class="profile-img">👨‍🔬</div>
+            <h1>Abhishek Meena</h1>
+            <p class="subtitle">Third Year Chemical Engineering Student</p>
+            <div class="iit-badge">Indian Institute of Technology, Bombay</div>
+        </div>
+    </header>
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    <section class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I am a passionate third-year Chemical Engineering student at IIT Bombay, one of India's premier technical institutions. My journey in chemical engineering is driven by a deep curiosity about process optimization, sustainable technologies, and innovation in chemical processes.</p>
+                
+                <p>With a strong foundation in thermodynamics, fluid mechanics, and process design, I am constantly exploring how chemical engineering principles can be applied to solve real-world challenges, particularly in areas of environmental sustainability and process efficiency.</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">3rd</div>
+                    <div>Year Student</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8+</div>
+                    <div>CPI/CGPA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div>Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">IIT</div>
+                    <div>Bombay</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    class Particle {
-        constructor(x, y, size, speedX, speedY) {
-            this.x = x;
-            this.y = y;
-            this.size = size;
-            this.speedX = speedX;
-            this.speedY = speedY;
-        }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.size > 0.2) this.size -= 0.02;
-        }
-        draw() {
-            ctx.fillStyle = 'white';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
+    <section class="container">
+        <h2 class="section-title">Key Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <span class="achievement-icon">🏆</span>
+                <div class="achievement-title">Academic Excellence</div>
+                <p>Maintained consistent academic performance with CGPA of 8.5+ across all semesters at IIT Bombay</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">🔬</span>
+                <div class="achievement-title">Research Experience</div>
+                <p>Actively involved in undergraduate research projects focusing on process optimization and sustainable chemical engineering practices</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">💡</span>
+                <div class="achievement-title">Innovation Projects</div>
+                <p>Developed innovative solutions for chemical process problems through coursework and independent projects</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">🎯</span>
+                <div class="achievement-title">JEE Advanced</div>
+                <p>Secured admission to IIT Bombay through JEE Advanced, demonstrating strong analytical and problem-solving skills</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">👥</span>
+                <div class="achievement-title">Leadership</div>
+                <p>Active participation in departmental activities and student organizations, developing leadership and teamwork skills</p>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-icon">📚</span>
+                <div class="achievement-title">Technical Skills</div>
+                <p>Proficient in chemical engineering software, programming languages, and simulation tools essential for modern chemical engineering</p>
+            </div>
+        </div>
+    </section>
 
-    function init() {
-        particlesArray = [];
-        for (let i = 0; i < numberOfParticles; i++) {
-            const size = Math.random() * 5 + 1;
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const speedX = Math.random() * 3 - 1.5;
-            const speedY = Math.random() * 3 - 1.5;
-            particlesArray.push(new Particle(x, y, size, speedX, speedY));
-        }
-    }
+    <section class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">Process Optimization Study</div>
+                <p>Conducted comprehensive analysis of chemical process efficiency, identifying key bottlenecks and proposing optimization strategies that could improve overall plant efficiency by 15-20%.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">MATLAB</span>
+                    <span class="tech-tag">Aspen HYSYS</span>
+                    <span class="tech-tag">Process Simulation</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">Sustainable Energy Research</div>
+                <p>Investigating renewable energy integration in chemical processes, focusing on reducing carbon footprint while maintaining economic viability of industrial operations.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">ChemCAD</span>
+                    <span class="tech-tag">Life Cycle Analysis</span>
+                    <span class="tech-tag">Sustainability</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">Heat Exchanger Design</div>
+                <p>Designed and optimized a shell-and-tube heat exchanger for industrial application, considering thermal efficiency, pressure drop, and economic factors.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Heat Transfer</span>
+                    <span class="tech-tag">AutoCAD</span>
+                    <span class="tech-tag">Design Optimization</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">Mass Transfer Lab Analysis</div>
+                <p>Experimental study on absorption and distillation processes, analyzing mass transfer coefficients and developing correlations for industrial applications.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Experimental Design</span>
+                    <span class="tech-tag">Data Analysis</span>
+                    <span class="tech-tag">Mass Transfer</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
-        }
-        requestAnimationFrame(animate);
-    }
+    <section class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Programming & Software</h3>
+                <ul class="skill-list">
+                    <li>MATLAB & Simulink</li>
+                    <li>Python for Engineering</li>
+                    <li>Aspen HYSYS/Plus</li>
+                    <li>ChemCAD</li>
+                    <li>AutoCAD</li>
+                    <li>Microsoft Office Suite</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Core Engineering</h3>
+                <ul class="skill-list">
+                    <li>Process Design & Simulation</li>
+                    <li>Heat & Mass Transfer</li>
+                    <li>Thermodynamics</li>
+                    <li>Fluid Mechanics</li>
+                    <li>Reaction Engineering</li>
+                    <li>Process Control</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Research & Analysis</h3>
+                <ul class="skill-list">
+                    <li>Data Analysis & Statistics</li>
+                    <li>Experimental Design</li>
+                    <li>Technical Writing</li>
+                    <li>Literature Review</li>
+                    <li>Process Optimization</li>
+                    <li>Safety Analysis</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <ul class="skill-list">
+                    <li>Problem Solving</li>
+                    <li>Team Collaboration</li>
+                    <li>Project Management</li>
+                    <li>Communication</li>
+                    <li>Leadership</li>
+                    <li>Critical Thinking</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    init();
-    animate();
-}
+    <section class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <a href="mailto:your.email@iitb.ac.in" class="contact-item">
+                <span class="contact-icon">📧</span>
+                <div>Email</div>
+                <small>abhishekmeena00036@gmail.com</small>
+            </a>
+            
+            <a href="https://linkedin.com/in/yourprofile" class="contact-item">
+                <span class="contact-icon">💼</span>
+                <div>https://www.linkedin.com/in/abhishek-meena-b67123287/</div>
+                <small>Connect professionally</small>
+            </a>
+            
+            <a href="https://github.com/yourusername" class="contact-item">
+                <span class="contact-icon">💻</span>
+                <div>GitHub</div>
+                <small>View my projects</small>
+            </a>
+            
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <div>Phone</div>
+                <small>+91 8000958112</small>
+            </div>
+        </div>
+    </section>
 
-// Typing effect
-function typeWriterEffect() {
-    const nameElement = document.getElementById('name-title');
-    const originalText = nameElement.textContent;
-    nameElement.textContent = '';
-    let i = 0;
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. Chemical Engineering Student, IIT Bombay</p>
+            <p>Building the future through innovative chemical engineering solutions</p>
+        </div>
+    </footer>
 
-    function type() {
-        if (i < originalText.length) {
-            nameElement.textContent += originalText.charAt(i);
-            i++;
-            setTimeout(type, 150);
-        } else {
-            nameElement.style.borderRight = 'none';
-        }
-    }
-    type();
-}
+    <script>
+        // Add smooth scrolling and interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-// Scroll progress bar
-function updateScrollProgress() {
-    const progressBar = document.getElementById('progress-bar');
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
-    progressBar.style.width = progress + '%';
-}
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
 
-// Run when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    createParticles();
-    typeWriterEffect();
-    window.addEventListener('scroll', updateScrollProgress);
-});
-</script>
+            // Observe all cards
+            document.querySelectorAll('.glass-card, .achievement-card, .project-card, .skill-category').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Add parallax effect to floating circles
+            document.addEventListener('mousemove', function(e) {
+                const circles = document.querySelectorAll('.floating-circle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+
+                circles.forEach((circle, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const xOffset = (x - 0.5) * speed * 20;
+                    const yOffset = (y - 0.5) * speed * 20;
+                    
+                    circle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                });
+            });
+
+            // Add typing effect to the name
+            const nameElement = document.querySelector('h1');
+            const originalText = nameElement.textContent;
+            nameElement.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
 </body>
 </html>
+
+
+Through this code i want to change the background of this website how to do?
