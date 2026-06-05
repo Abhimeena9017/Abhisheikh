@@ -10,13 +10,17 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        /* 1) Solid color */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background:#000000;
-            min-height: 100vh;
+            background: #f4f4f4;
+        }
+        /* 2) Gradient background */
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+        }
+        /* 3) Image background */
+        body {
+            background: url("your-image.jpg") no-repeat center center/cover;
         }
 
         .container {
